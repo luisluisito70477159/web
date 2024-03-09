@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <LINK REL="stylesheet" TYPE="text/css" HREF="estiloscalculadora.css">
+  <link href="css1/principal.css" rel = "stylesheet">
+</head>
+<body>
+
+  <form name="calculator">
+    <h3>CAJERO DEL BNL<a href=""></a></h3>
+    <input type="textfield" name="ans" value="">
+    <br>
+    <input type="button" value="1" onClick="document.calculator.ans.value+='1'">
+    <input type="button" value="2" onClick="document.calculator.ans.value+='2'">
+    <input type="button" value="3" onClick="document.calculator.ans.value+='3'">
+   
+    <br>
+    <input type="button" value="4" onClick="document.calculator.ans.value+='4'">
+    <input type="button" value="5" onClick="document.calculator.ans.value+='5'">
+    <input type="button" value="6" onClick="document.calculator.ans.value+='6'">
+    
+    <br>
+    <input type="button" value="7" onClick="document.calculator.ans.value+='7'">
+    <input type="button" value="8" onClick="document.calculator.ans.value+='8'">
+    <input type="button" value="9" onClick="document.calculator.ans.value+='9'">
+    
+    <br>
+    <input type="button" value="0" onClick="document.calculator.ans.value+='0'">
+    <input type="reset" value="c">
+   
+    <br>
+ <input type="button" value="DEPOSITO" onclick="deposit();">
+  <input type="button" value="SALDO" onclick="checkBalance();">
+<input type="button" value="RETIRO" onclick="reti();">
+    <br>
+
+    </form>
+</body>
+</html>
+<script >
+ const loginForm = document.getElementById("loginForm");
+const message = document.getElementById("message");
+const atmScreen = document.getElementById("atmScreen");
+const display = document.getElementById("display");
+let balance = 1000; // Saldo inicial (puede modificarse)
+function checkBalance() {
+    alert(`Saldo actual: ${balance} bolivianos.`);
+}
+function deposit() {
+    const amount = parseFloat(document.calculator.ans.value);
+
+    if (isNaN(amount) || amount <= 0) {
+        alert("Ingrese un monto válido.");
+        return;
+    }
+
+    balance += amount;
+    alert(`Ha depositado ${amount} bolivianos. Saldo actual: ${balance} bolivianos.`);
+    clearDisplay();
+}
+
+function reti(){
+  const amount = parseFloat(document.calculator.ans.value);
+
+    if (isNaN(amount) || amount <= 0) {
+        alert("Ingrese un monto válido.");
+        return;
+    }
+
+    balance -= amount;
+    alert(`Ha retirado ${amount} bolivianos. Saldo actual: ${balance} bolivianos.`);
+    clearDisplay(); 
+}
+</script>
